@@ -31,20 +31,29 @@ WebSocket实时行情订阅实践与最佳实践
 
 ## 最小请求示例
 ### REST 示例（历史 K 线）
-<code>GET https://kun.pro/api/kline?symbol=700.HK&period=1m&limit=100</code>
+<code>GET https://kun.pro/api/history?market=KR&symbol=KRX:000040&interval=1&count=200</code>
+<code>Authorization: Bearer YOUR_TOKEN</code>
 
 ### WebSocket 示例（实时订阅）
-<code>wss://kun.pro/ws/quote?token=YOUR_TOKEN</code>
-<code>{"cmd":"subscribe","symbols":["700.HK","AAPL.US"]}</code>
+<code>wss://kun.pro/ws?token=YOUR_TOKEN</code>
+<code>{"action":"subscribe","market":"KR","symbol":"KRX:000040"}</code>
 
 ## 关键词与主题
 - keyword: WebSocket行情
-- topics:websocket, quote-api, tick, realtime-data
+- topics:websocket, quote-api, token-auth, realtime-data
 
 ## 文档与接入
 - 开发文档中心：[https://kun.pro/docs.html](https://kun.pro/docs.html)
 - 官网入口：[https://kun.pro](https://kun.pro?utm_campaign=kun_pro_api_seo&utm_content=shenfu8_websocket-quote-api&utm_medium=readme&utm_source=github)
 - 接入咨询：请通过官网页面提交需求（支持 API 评估与接入建议）
+
+## 推荐关键词（站点统一）
+- 鯤鵬數據 API
+- WebSocket 文檔
+- 歷史 K 線 API
+- 交易所快照 API
+- Token 鑑權
+- 行情 API 接入
 
 ## 常见问题（FAQ）
 ### 1. 更适合 REST 还是 WebSocket？
