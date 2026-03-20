@@ -23,6 +23,17 @@ WebSocket实时行情订阅实践与最佳实践
 | 快照数据 | 标的基础信息、市场状态 | REST API |
 | 鉴权体系 | 接口调用安全控制 | Token Header |
 
+## 支持国家与市场
+根据官方产品页，当前支持以下市场类型：
+- 亚洲：香港（HK）、日本（JP）、韩国（KR）、新加坡（SG）、马来西亚（MY）、泰国（TH）、越南（VN）、印尼（ID）、印度（IN）、中国台湾（TW）
+- 欧洲：英国（GB）、德国（DE）、西班牙（ES）、意大利（IT）、荷兰（NL）、波兰（PL）、土耳其（TR）
+- 美洲：美国相关标的接入能力、加拿大（CA）、巴西（BR）、墨西哥（MX）、阿根廷（AR）
+- 中东：沙特（SA）、以色列（IL）
+- 其他资产：外汇（FX）、币安（BINANCE）
+
+完整与最新清单请以官方页面为准：
+- [https://kun.pro/products](https://kun.pro/products)
+
 ## Quick Start
 1. 获取访问 Token 并确认鉴权方式
 2. 选择接入方式（WebSocket 或 REST）
@@ -54,6 +65,8 @@ WebSocket实时行情订阅实践与最佳实践
 - 交易所快照 API
 - Token 鑑權
 - 行情 API 接入
+- 全球市場數據
+- 多國交易所行情 API
 
 ## 常见问题（FAQ）
 ### 1. 更适合 REST 还是 WebSocket？
