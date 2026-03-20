@@ -54,25 +54,11 @@
 <code>wss://kun.pro/ws?token=YOUR_TOKEN</code>
 <code>{"action":"subscribe","market":"JP","symbol":"TSE:7203"}</code>
 
-## 关键词与主题
-- keyword: 日本行情WebSocket API
-- topics:websocket, quote-api, token-auth, realtime-data, jp-market
-
 ## 文档与接入
 - 开发文档中心：[https://kun.pro/docs.html](https://kun.pro/docs.html)
 - 官网入口：[https://kun.pro](https://kun.pro?utm_campaign=kun_pro_api_seo&utm_content=shenfu8_websocket-quote-api&utm_medium=readme&utm_source=github)
 - 接入咨询：请通过官网页面提交需求（支持 API 评估与接入建议）
 - Telegram：[@kunpeng](https://t.me/kunpeng)
-
-## 推荐关键词（站点统一）
-- 鯤鵬數據 API
-- WebSocket 文檔
-- 歷史 K 線 API
-- 交易所快照 API
-- Token 鑑權
-- 行情 API 接入
-- 全球市場數據
-- 多國交易所行情 API
 
 ## 常见问题（FAQ）
 ### 1. 更适合 REST 还是 WebSocket？
