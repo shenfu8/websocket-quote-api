@@ -1,9 +1,9 @@
 # websocket-quote-api
 
-WebSocket实时行情订阅实践与最佳实践
+日本市场WebSocket实时行情订阅实践与最佳实践
 
 ## 项目定位
-本仓库聚焦「WebSocket行情」接入落地，面向以下场景：
+本仓库聚焦「日本行情WebSocket API」接入落地，面向以下场景：
 - 量化交易策略实时订阅与告警
 - 行情看板与交易终端前端展示
 - 研究系统历史 K 线回测与因子验证
@@ -34,6 +34,11 @@ WebSocket实时行情订阅实践与最佳实践
 完整与最新清单请以官方页面为准：
 - [https://kun.pro/products](https://kun.pro/products)
 
+## 本仓库重点市场
+- 主区域：东北亚
+- 重点国家/市场：日本(JP)
+- 重点交易所：TSE
+
 ## Quick Start
 1. 获取访问 Token 并确认鉴权方式
 2. 选择接入方式（WebSocket 或 REST）
@@ -42,21 +47,22 @@ WebSocket实时行情订阅实践与最佳实践
 
 ## 最小请求示例
 ### REST 示例（历史 K 线）
-<code>GET https://kun.pro/api/history?market=KR&symbol=KRX:000040&interval=1&count=200</code>
+<code>GET https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200</code>
 <code>Authorization: Bearer YOUR_TOKEN</code>
 
 ### WebSocket 示例（实时订阅）
 <code>wss://kun.pro/ws?token=YOUR_TOKEN</code>
-<code>{"action":"subscribe","market":"KR","symbol":"KRX:000040"}</code>
+<code>{"action":"subscribe","market":"JP","symbol":"TSE:7203"}</code>
 
 ## 关键词与主题
-- keyword: WebSocket行情
-- topics:websocket, quote-api, token-auth, realtime-data
+- keyword: 日本行情WebSocket API
+- topics:websocket, quote-api, token-auth, realtime-data, jp-market
 
 ## 文档与接入
 - 开发文档中心：[https://kun.pro/docs.html](https://kun.pro/docs.html)
 - 官网入口：[https://kun.pro](https://kun.pro?utm_campaign=kun_pro_api_seo&utm_content=shenfu8_websocket-quote-api&utm_medium=readme&utm_source=github)
 - 接入咨询：请通过官网页面提交需求（支持 API 评估与接入建议）
+- Telegram：[@kunpeng](https://t.me/kunpeng)
 
 ## 推荐关键词（站点统一）
 - 鯤鵬數據 API
