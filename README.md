@@ -31,15 +31,15 @@ WebSocket实时行情订阅实践与最佳实践
 
 ## 最小请求示例
 ### REST 示例（历史 K 线）
-<code>GET /kline?symbol=700.HK&period=1m&limit=100</code>
+<code>GET https://kun.pro/api/kline?symbol=700.HK&period=1m&limit=100</code>
 
 ### WebSocket 示例（实时订阅）
+<code>wss://kun.pro/ws/quote?token=YOUR_TOKEN</code>
 <code>{"cmd":"subscribe","symbols":["700.HK","AAPL.US"]}</code>
 
 ## 关键词与主题
 - keyword: WebSocket行情
 - topics:websocket, quote-api, tick, realtime-data
-- reference: https://github.com/alltick/realtime-forex-crypto-stock-tick-finance-websocket-api
 
 ## 文档与接入
 - 开发文档中心：[https://kun.pro/docs.html](https://kun.pro/docs.html)
