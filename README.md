@@ -34,11 +34,6 @@
 完整与最新清单请以官方页面为准：
 - [https://kun.pro/products](https://kun.pro/products)
 
-## 本仓库重点市场
-- 主区域：东北亚
-- 重点国家/市场：日本(JP)
-- 重点交易所：TSE
-
 ## Quick Start
 1. 获取访问 Token 并确认鉴权方式
 2. 选择接入方式（WebSocket 或 REST）
@@ -53,6 +48,140 @@
 ### WebSocket 示例（实时订阅）
 <code>wss://kun.pro/ws?token=YOUR_TOKEN</code>
 <code>{"action":"subscribe","market":"JP","symbol":"TSE:7203"}</code>
+
+## 主流代码对接示例
+### 1) cURL（REST 历史 K 线）
+<pre><code>curl -X GET "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Accept: application/json"</code></pre>
+
+### 2) JavaScript（fetch）
+<pre><code>const url = "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200";
+const resp = await fetch(url, {
+  method: "GET",
+  headers: {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "Accept": "application/json"
+  }
+});
+const data = await resp.json();
+console.log(data);</code></pre>
+
+### 3) Python（requests）
+<pre><code>import requests
+
+url = "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200"
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "Accept": "application/json"
+}
+res = requests.get(url, headers=headers, timeout=20)
+print(res.status_code)
+print(res.json())</code></pre>
+
+### 4) JavaScript（WebSocket 实时订阅）
+<pre><code>const ws = new WebSocket("wss://kun.pro/ws?token=YOUR_TOKEN");
+
+ws.onopen = () => {
+  ws.send(JSON.stringify({
+    action: "subscribe",
+    market: "JP",
+    symbol: "TSE:7203"
+  }));
+};
+
+ws.onmessage = (event) => {
+  console.log("quote:", event.data);
+};</code></pre>
+
+### 5) Python（websocket-client）
+<pre><code>import json
+import websocket
+
+def on_open(ws):
+    ws.send(json.dumps({
+        "action": "subscribe",
+        "market": "JP",
+        "symbol": "TSE:7203"
+    }))
+
+def on_message(ws, message):
+    print("quote:", message)
+
+ws = websocket.WebSocketApp(
+    "wss://kun.pro/ws?token=YOUR_TOKEN",
+    on_open=on_open,
+    on_message=on_message
+)
+ws.run_forever()</code></pre>
+
+### 6) Go（后端服务，net/http）
+<pre><code>package main
+
+import (
+  "fmt"
+  "io"
+  "net/http"
+)
+
+func main() {
+  url := "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200"
+  req, _ := http.NewRequest(http.MethodGet, url, nil)
+  req.Header.Set("Authorization", "Bearer YOUR_TOKEN")
+  req.Header.Set("Accept", "application/json")
+
+  resp, err := http.DefaultClient.Do(req)
+  if err != nil {
+    panic(err)
+  }
+  defer resp.Body.Close()
+
+  body, _ := io.ReadAll(resp.Body)
+  fmt.Println(resp.StatusCode)
+  fmt.Println(string(body))
+}</code></pre>
+
+### 7) Java（后端服务，HttpClient）
+<pre><code>import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+    String url = "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200";
+    HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create(url))
+      .header("Authorization", "Bearer YOUR_TOKEN")
+      .header("Accept", "application/json")
+      .GET()
+      .build();
+
+    HttpClient client = HttpClient.newHttpClient();
+    HttpResponse&lt;String&gt; response = client.send(request, HttpResponse.BodyHandlers.ofString());
+    System.out.println(response.statusCode());
+    System.out.println(response.body());
+  }
+}</code></pre>
+
+### 8) C#（后端服务，HttpClient）
+<pre><code>using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program {
+  static async Task Main() {
+    var url = "https://kun.pro/api/history?market=JP&symbol=TSE:7203&interval=1&count=200";
+    using var client = new HttpClient();
+    client.DefaultRequestHeaders.Add("Authorization", "Bearer YOUR_TOKEN");
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+    var resp = await client.GetAsync(url);
+    var body = await resp.Content.ReadAsStringAsync();
+    Console.WriteLine((int)resp.StatusCode);
+    Console.WriteLine(body);
+  }
+}</code></pre>
 
 ## 文档与接入
 - 开发文档中心：[https://kun.pro/docs.html](https://kun.pro/docs.html)
